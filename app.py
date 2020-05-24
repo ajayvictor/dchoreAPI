@@ -34,6 +34,34 @@ def worker_confirm():
 
 
 
+@app.route('/workers_bookings',methods = ['POST', 'GET']) 
+def workers_bookings(): 
+   if request.method == 'POST': 
+      username = request.form['username'] 
+
+      print(username)
+
+      users = [{
+	"name" : "Ajay",
+        "email" : "test@test.com",
+        "location" : "Alappuzha",
+	"mobile" : "12345678",
+        "date" : "12-07-2020",
+        "time" : "06:30 PM"
+	}]
+
+      print(users)
+
+      return jsonify(
+        status=True,
+	status_message="Yeah!! Cool, Booking Success",
+	users=users    	
+	)
+   else: 
+      user = request.args.get('nm') 
+      return redirect(url_for('success',name = user)) 
+
+
 
 @app.route('/workers_booked_data',methods = ['POST', 'GET'])
 def workers_booked_data(): 
@@ -132,7 +160,8 @@ def login():
 	"username" : username,
         "email" : "test@test.com",
         "gender" : "Male",
-	"category" : "User"
+	"category" : "User",
+        "location" : "Alleppey"
 	}
 
       print(user)
@@ -148,21 +177,19 @@ def login():
  
 
 
-@app.route('/signup',methods = ['POST', 'GET']) 
-def signup(): 
+@app.route('/worker_login',methods = ['POST', 'GET']) 
+def worker_login(): 
    if request.method == 'POST': 
       username = request.form['username'] 
-      email = request.form['email'] 
       password = request.form['password'] 
-      gender = request.form['gender'] 
-      category = request.form['category'] 
 
       user = {
-	"id" : "1",
+	"id" : 1,
 	"username" : username,
-        "email" : email,
-        "gender" : gender,
-	"category" : category
+        "email" : "test@test.com",
+        "gender" : "Male",
+	"category" : "Worker",
+        "location" : "Alleppey"
 	}
 
       print(user)
@@ -175,6 +202,74 @@ def signup():
    else: 
       user = request.args.get('nm') 
       return redirect(url_for('success',name = user)) 
+
+
+
+@app.route('/worker_signup',methods = ['POST', 'GET']) 
+def worker_signup(): 
+   if request.method == 'POST': 
+      username = request.form['username'] 
+      email = request.form['email'] 
+      password = request.form['password'] 
+      category = request.form['category'] 
+      gender = request.form['gender'] 
+      experience = request.form['experience'] 
+      age = request.form['age'] 
+      location = request.form['location'] 
+
+      user = {
+	"id" : "1",
+	"username" : username,
+        "email" : email,
+        "gender" : gender,
+	}
+
+      print(user)
+
+      return jsonify(
+        status=True,
+	status_message="Yeah!! Cool",
+	user=user    	
+	)
+   else: 
+      user = request.args.get('nm') 
+      return redirect(url_for('success',name = user)) 
+
+
+
+
+
+@app.route('/signup',methods = ['POST', 'GET']) 
+def signup(): 
+   if request.method == 'POST': 
+      username = request.form['username'] 
+      email = request.form['email'] 
+      password = request.form['password'] 
+      location = request.form['location'] 
+      gender = request.form['gender'] 
+      category = request.form['category'] 
+      
+
+      user = {
+	"id" : "1",
+	"username" : username,
+        "email" : email,
+        "gender" : gender,
+        "location" : location,
+        "category" : category,
+	}
+
+      print(user)
+
+      return jsonify(
+        status=True,
+	status_message="Yeah!! Cool",
+	user=user    	
+	)
+   else: 
+      user = request.args.get('nm') 
+      return redirect(url_for('success',name = user)) 
+
   
 if __name__ == '__main__': 
    app.run(debug = True,host='0.0.0.0')
