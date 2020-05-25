@@ -222,6 +222,7 @@ def worker_signup():
 	"username" : username,
         "email" : email,
         "gender" : gender,
+        "category" : "Worker",
 	}
 
       print(user)
@@ -256,7 +257,7 @@ def signup():
         "email" : email,
         "gender" : gender,
         "location" : location,
-        "category" : category,
+        "category" : "User",
 	}
 
       print(user)
