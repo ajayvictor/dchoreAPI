@@ -11,16 +11,22 @@ def success(name):
 def worker_confirm(): 
    if request.method == 'POST': 
       username = request.form['username'] 
+      date = request.form['date'] 
+      time = request.form['time'] 
+      worker_username = request.form['worker_mobile'] 
 
       user = {
-	"id" : 1,
+	"name" : "Ajay",
 	"username" : username,
         "email" : "test@test.com",
         "gender" : "Male",
 	"category" : "User"
 	}
 
-      print(user)
+      print(username)
+      print(worker_username)
+      print(date)
+      print(time)
 
       return jsonify(
         status=True,
@@ -156,12 +162,12 @@ def login():
       password = request.form['password'] 
 
       user = {
-	"id" : 1,
+	"name" : "test",
 	"username" : username,
         "email" : "test@test.com",
         "gender" : "Male",
 	"category" : "User",
-        "location" : "Alleppey"
+        "location" : "Alleppey",
 	}
 
       print(user)
@@ -184,12 +190,12 @@ def worker_login():
       password = request.form['password'] 
 
       user = {
-	"id" : 1,
+	"name" : "test",
 	"username" : username,
         "email" : "test@test.com",
         "gender" : "Male",
 	"category" : "Worker",
-        "location" : "Alleppey"
+        "location" : "Alleppey",
 	}
 
       print(user)
@@ -218,11 +224,12 @@ def worker_signup():
       location = request.form['location'] 
 
       user = {
-	"id" : "1",
+	"name" : "Ajay",
 	"username" : username,
         "email" : email,
         "gender" : gender,
         "category" : "Worker",
+        "location" : location,
 	}
 
       print(user)
@@ -252,7 +259,7 @@ def signup():
       
 
       user = {
-	"id" : "1",
+	"name" : "Ajay",
 	"username" : username,
         "email" : email,
         "gender" : gender,
