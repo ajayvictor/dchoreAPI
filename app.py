@@ -310,6 +310,7 @@ def login():
    if request.method == 'POST': 
       username = request.form['username'] 
       password = request.form['password'] 
+      user={}
 
       cursor = mysql.connection.cursor()
       try:
@@ -331,6 +332,7 @@ def login():
                         }
       except Exception as e:
         print(e)
+        user={}
         status=False
         status_message="Something Went Wrong!"
 
